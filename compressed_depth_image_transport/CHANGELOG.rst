@@ -2,8 +2,8 @@
 Changelog for package compressed_depth_image_transport
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.5.1 (2024-04-13)
+------------------
 * Update maintainer (`#112 <https://github.com/ros-perception/image_transport_plugins/issues/112>`_)
 * Contributors: Kenji Brameld
 
