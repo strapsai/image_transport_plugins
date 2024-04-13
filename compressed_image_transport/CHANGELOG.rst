@@ -2,6 +2,11 @@
 Changelog for package compressed_image_transport
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update maintainer (`#112 <https://github.com/ros-perception/image_transport_plugins/issues/112>`_)
+* Contributors: Kenji Brameld
+
 2.5.0 (2022-04-18)
 ------------------
 
