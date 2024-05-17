@@ -45,7 +45,7 @@
 #include <vector>
 #include <sstream>
 
-constexpr int kDefaultPngLevel = 9;
+constexpr int kDefaultPngLevel = 3;
 constexpr double kDefaultDepthMax = 10.0;
 constexpr double KDefaultDepthQuantization = 100.0;
 
@@ -67,7 +67,7 @@ void CompressedDepthPublisher::advertiseImpl(
 
   node->get_parameter_or<int>("png_level", config_.png_level, kDefaultPngLevel);
   node->get_parameter_or<double>("depth_max", config_.depth_max, kDefaultDepthMax);
-  node->get_parameter_or<double>("depth_quantization", config_.depth_max, KDefaultDepthQuantization);
+  node->get_parameter_or<double>("depth_quantization", config_.depth_quantization, KDefaultDepthQuantization);
 }
 
 void CompressedDepthPublisher::publish(
