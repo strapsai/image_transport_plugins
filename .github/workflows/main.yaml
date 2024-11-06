@@ -1,0 +1,45 @@
+name: Build ROS Workspace Main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  ROOT_DIR: /home/developer/mmpug_ws/src/airlab_ros2
+  PACKAGE_DIR: /home/developer/mmpug_ws/src/airlab_ros2/src/robot/image_transport_plugins
+  PACKAGE_NAME: robot/image_transport_plugins
+  BRANCH_NAME: main
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: pre-pull build
+        continue-on-error: true  # Allow the workflow to continue even if this step fails
+        run: |
+          cd $ROOT_DIR
+          rm -rf build install log
+          cd $PACKAGE_DIR
+          git checkout $BRANCH_NAME
+          cd $ROOT_DIR
+          source /opt/ros/humble/setup.bash
+          colcon build --symlink-install --packages-select $PACKAGE_NAME
+      - name: post-pull build
+        run: |
+          # set -e
+          echo ${{github.ref}}
+          echo $ROOT_DIR
+          echo $PACKAGE_DIR
+          echo $PACKAGE_NAME
+          echo $BRANCH_NAME
+          cd ~/runner_test_ws
+          cd $PACKAGE_DIR
+          git fetch
+          git pull origin $BRANCH_NAME
+          git checkout $BRANCH_NAME
+          cd $ROOT_DIR
+          source /opt/ros/humble/setup.bash
+          colcon build --symlink-install --packages-select $PACKAGE_NAME 
